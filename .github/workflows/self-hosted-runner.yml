@@ -1,0 +1,47 @@
+```yaml
+name: Self-Hosted Runner Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-runner:
+    runs-on: ubuntu-latest-ppc64le
+
+    steps:
+      - name: Show runner information
+        run: |
+          echo "=== Runner Information ==="
+          echo "Hostname: $(hostname)"
+          echo "Architecture: $(uname -m)"
+          echo "Kernel: $(uname -r)"
+          echo "OS:"
+          cat /etc/os-release
+
+      - name: Check current user
+        run: |
+          echo "=== User Information ==="
+          whoami
+          id
+          echo "HOME=$HOME"
+
+      - name: Test filesystem
+        run: |
+          echo "=== Filesystem ==="
+          pwd
+          df -h
+          ls -la
+
+      - name: Test network
+        run: |
+          echo "=== Network ==="
+          hostname -I
+          curl -I https://github.com
+
+      - name: Success
+        run: |
+          echo "================================"
+          echo " Self-hosted runner test PASSED"
+          echo "================================"
+```
+
