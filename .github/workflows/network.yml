@@ -1,18 +1,15 @@
 name: Network Tests
-
+# Only run on branches (e.g. not tags)
 on:
   workflow_dispatch:
-
 jobs:
   speedtest:
     runs-on: ubuntu-latest-ppc64le
-
     steps:
       - name: Check runner
         run: |
           uname -a
-          podman --version
-
-      - name: Speedtest in Podman
+          sudo docker --version
+      - name: Speedtest in Docker
         run: |
-          podman run --rm --network host speedtest/speedtest:latest
+          sudo docker run --rm --network host speedtest/speedtest:latest
