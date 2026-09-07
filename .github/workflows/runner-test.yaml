@@ -5,7 +5,7 @@ on:
 
 jobs:
   benchmark:
-    runs-on: ubuntu-24.04-ppc64le
+    runs-on: ubuntu-latest-ppc64le
     steps:
       - name: Pre-pull curl image (so it doesn't skew container timing)
         run: docker pull curlimages/curl:latest
