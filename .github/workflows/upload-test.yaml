@@ -5,7 +5,7 @@ on:
 
 jobs:
   upload-speed-runner:
-    runs-on: ubuntu-24.04-ppc64le
+    runs-on: ubuntu-latest-ppc64le
     steps:
       - name: Test upload speed (runner)
         run: |
@@ -23,7 +23,7 @@ jobs:
           rm /tmp/test.bin
 
   upload-speed-container:
-    runs-on: ubuntu-24.04-ppc64le
+    runs-on: ubuntu-latest-ppc64le
     container:
       image: ubuntu:24.04
     steps:
